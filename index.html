@@ -5,20 +5,29 @@
         <title>陸姊手工水餃</title>
     </head>
     <script>
-		var itemList = ["高麗菜豬肉水餃","韮菜豬肉水餃","玉米豬肉水餃",
-		"泡菜豬肉水餃","青蔥豬肉水餃","蝦仁豬肉水餃","素食水餃","素食泡菜水餃"];
-		var listLength = itemList.length;
+		var item = [
+		["高麗菜豬肉水餃",170,100],
+		["韮菜豬肉水餃",170,100],
+		["玉米豬肉水餃",170,100],
+		["泡菜豬肉水餃",170,100],
+		["青蔥豬肉水餃",170,100],
+		["蝦仁豬肉水餃",400,240],
+		["素食水餃",170,100],
+		["素食泡菜水餃",170,100],];
+		
+		var listLength = item.length;
 		var itemBig = [];	//下拉式選單的id
 		var itemSmall = [];	//下拉式選單的id
 		var itemX = [];		//品項的id
-		var stringArray = [];
+		var stringArray = [];	//明細字串
+		var price = 0;
 		
 		window.onload=function(){ //初始化視窗
 			for(let u=0;u<listLength;u++){
 				itemSmall[u]="item"+u+"Small";	 //製作id array
 				itemBig[u]="item"+u+"Big";		//製作id array
 				itemX[u]='item'+u;
-				document.getElementById(itemX[u]).textContent = itemList[u]; //修改品項名稱
+				document.getElementById(itemX[u]).textContent = item[u][0]; //修改品項名稱
 			}
 		}
 
@@ -28,20 +37,25 @@
 		
 		function submit(){
 			stringArray = [];
-			
+			price = 0;
+			let prc = 0;	//小計
 			for(let i=0;i<listLength;i++){	//抽取選擇的品項
 				if(getInt(itemBig[i])>0 || getInt(itemSmall[i])>0){
-					stringArray = stringArray + itemList[i] + "：" + getInt(itemBig[i]) + "大包、" + getInt(itemSmall[i]) + "小包\n";
+					prc = item[i][1]*getInt(itemBig[i]) + item[i][2]*getInt(itemSmall[i]); //小計
+					stringArray = stringArray + item[i][0] + "：" + getInt(itemBig[i]) + "大包、" + getInt(itemSmall[i]) + "小包" + prc + "$\n";
+					price += prc;
 				}
 			}
-			document.getElementById('resultHeader').innerText = "訂單明細"; //顯示清單
+			stringArray += "總金額：" + price + "$";
+			
+			document.getElementById('resultHeader').innerText = "訂單明細";
 			document.getElementById('resultText').innerText = stringArray; //顯示清單
 		}
 		
 		
 		
 		function test(){	//testing
-			document.getElementById('resultText').textContent = getInt(itemBig[1]);
+			document.getElementById('resultText').textContent = price;
 		}
 		
 		 
@@ -52,7 +66,7 @@
         <p>請輸入姓名<input type="text" id='name'></p>
 		<p>請輸入電話<input type="text" id='phone'></p>
 
-
+		<h2>~~手工水餃~~</h2>
 		<table>
 			<tr>
 				<th>品項</th>
@@ -60,7 +74,7 @@
 				<th>小包數量</th>
 			</tr>
 			<tr> <!--item0-->
-				<td id="item0">itemList的第0項,之後會被初始化取代字串</td>
+				<td id="item0">item的第0項,之後會被初始化取代字串</td>
 				<td>
 					<select id="item0Big">
 						<option>0</option>
@@ -83,7 +97,7 @@
 				</td>
 			</tr>
 			<tr> <!--item1-->
-				<td id="item1">itemList的第1項,之後會被初始化取代字串</td>
+				<td id="item1">item的第1項,之後會被初始化取代字串</td>
 				<td>
 					<select id="item1Big">
 						<option>0</option>
@@ -106,7 +120,7 @@
 				</td>
 			</tr>
 			<tr> <!--item2-->
-				<td id="item2">itemList的第2項,之後會被初始化取代字串</td>
+				<td id="item2">item的第2項,之後會被初始化取代字串</td>
 				<td>
 					<select id="item2Big">
 						<option>0</option>
@@ -129,7 +143,7 @@
 				</td>
 			</tr>
 			<tr>  <!--item3-->
-				<td id="item3">itemList的第3項,之後會被初始化取代字串</td>
+				<td id="item3">item的第3項,之後會被初始化取代字串</td>
 				<td>
 					<select id="item3Big">
 						<option>0</option>
@@ -152,7 +166,7 @@
 				</td>
 			</tr>			
 			<tr>  <!--item4-->
-				<td id="item4">itemList的第4項,之後會被初始化取代字串</td>
+				<td id="item4">item的第4項,之後會被初始化取代字串</td>
 				<td>
 					<select id="item4Big">
 						<option>0</option>
@@ -175,7 +189,7 @@
 				</td>
 			</tr>
 			<tr>  <!--item5-->
-				<td id="item5">itemList的第5項,之後會被初始化取代字串</td>
+				<td id="item5">item的第5項,之後會被初始化取代字串</td>
 				<td>
 					<select id="item5Big">
 						<option>0</option>
@@ -198,7 +212,7 @@
 				</td>
 			</tr>
 			<tr>  <!--item6-->
-				<td id="item6">itemList的第6項,之後會被初始化取代字串</td>
+				<td id="item6">item的第6項,之後會被初始化取代字串</td>
 				<td>
 					<select id="item6Big">
 						<option>0</option>
@@ -221,7 +235,7 @@
 				</td>
 			</tr>
 			<tr>  <!--item7-->
-				<td id="item7">itemList的第7項,之後會被初始化取代字串</td>
+				<td id="item7">item的第7項,之後會被初始化取代字串</td>
 				<td>
 					<select id="item7Big">
 						<option>0</option>
@@ -244,7 +258,11 @@
 				</td>
 			</tr>
 		</table>
-        <p><button onclick="submit()">確認訂單</button></p>
+		<h2>~~手工千張~~</h2>
+		
+		
+		
+        <p><button onclick="submit()">訂單試算</button></p>
 		<p><button onclick="test()">測試按鈕</button></p>
 		
 		<h1 id="resultHeader"></h1>
