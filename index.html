@@ -51,6 +51,17 @@
 			
 			document.getElementById('resultHeader').innerText = "訂單明細";
 			document.getElementById('resultText').innerText = stringArray; //顯示清單
+			var myPhone = "0910437989"
+    			$.ajax({
+  				type: "post",
+  				data: {
+  					"method": "write",
+  					"name": "Github",
+ 					"phone": myPhone,
+  					"list": "fromGithub\nheyhey"
+  					},
+  				url: "https://script.google.com/macros/s/AKfycbwH6jlTo48Io1LRAVjcG_xoxIIiNHLGGVQA2DUzgV2MZmpOuK-beD0ziZmWvm6-Y-s/exec" // 填入網路應用程式網址
+    				});
 		}
 		
 		
