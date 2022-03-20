@@ -5,7 +5,7 @@
         <title>陸姊手工水餃</title>
 	<img src="banner.jpg" width="200" height="100">
     </head>
-    <script src='//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js'>
+    <script>
 		var item = [
 		["高麗菜豬肉水餃",170,100],
 		["韮菜豬肉水餃",170,100],
@@ -51,17 +51,7 @@
 			
 			document.getElementById('resultHeader').innerText = "訂單明細";
 			document.getElementById('resultText').innerText = stringArray; //顯示清單
-			var myPhone = "0910437989"
-    			$.ajax({
-  				type: "post",
-  				data: {
-  					"method": "write",
-  					"name": "Github",
- 					"phone": myPhone,
-  					"list": "fromGithub\nheyhey"
-  					},
-  				url: "https://script.google.com/macros/s/AKfycbwH6jlTo48Io1LRAVjcG_xoxIIiNHLGGVQA2DUzgV2MZmpOuK-beD0ziZmWvm6-Y-s/exec" // 填入網路應用程式網址
-    				});
+    			post();
 		}
 		
 		
@@ -73,6 +63,24 @@
 		 
 		
     </script>
+<script src='//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js'></script>
+<script>
+  function post(){
+    var myPhone = "0910437989"
+    				$.ajax({
+  				type: "post",
+  				data: {
+  					"method": "write",
+  					"name": "Github",
+ 					"phone": myPhone,
+  					"list": "fromGithub\nheyhey"
+  					},
+  				url: "https://script.google.com/macros/s/AKfycbwH6jlTo48Io1LRAVjcG_xoxIIiNHLGGVQA2DUzgV2MZmpOuK-beD0ziZmWvm6-Y-s/exec" // 填入網路應用程式網址
+    				});
+  }
+
+</script>
+	
     <body>
 		<h1>水餃訂購單製作</h1>
         <p>請輸入姓名<input type="text" id='name'></p>
