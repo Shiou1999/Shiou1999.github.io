@@ -493,7 +493,7 @@
 				<!-- Footer -->
 					<footer class="wrapper style1 align-center">
 						<div class="inner">
-							<p>陸姐手工水餃訂購網 ver.1</p>
+							<p>陸姐手工水餃訂購網 ver 1.1</p>
 							<p>Line帳號：@815wojar</p>
 							<p>手機號碼：0937216507</p>
 						</div>
@@ -602,6 +602,8 @@
 		
 		function send(){
 			getTime();
+			document.getElementById("sendButton").style.visibility = 'hidden';
+			
 			var name = document.getElementById("myName").value;
 			var phone = document.getElementById("myPhone").value;
 			var address = document.getElementById("myAddress").value;
@@ -621,8 +623,8 @@
 			});
 			
 			alert('感謝您的購買\n已收到您的訂單\n可以關閉頁面了');
-			document.getElementById("sendButton").disabled = true;
-			window.close();
+			
+			
 			
 
 		}
