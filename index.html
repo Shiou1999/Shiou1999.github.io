@@ -482,10 +482,10 @@
 									</div>
 									<div class="field">
 										<label for="message">訂單明細</label>
-										<p><em id="list"></em></p>
+										<p><em id="list">請先點選上方"點我試算訂單"按鈕</em></p>
 									</div>
 								</div>
-								<h2><a class="button" onClick="send()">送出訂單</a></h2>
+								<h2><a class="button" onClick="send()" id="sendButton">送出訂單</a></h2>
 							</form>
 						</div>
 					</section>
@@ -621,6 +621,7 @@
 			});
 			
 			alert('感謝您的購買\n已收到您的訂單\n可以關閉頁面了');
+			document.getElementById("sendButton").disabled = false;
 			window.close();
 			
 
